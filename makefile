@@ -1,5 +1,5 @@
 GPP = g++
-FLAGS = -std=c++11 -Wall -L $(SFML_LIB) -I $(SFML_HEADERS)
+FLAGS = -std=c++11 -Wall
 
 # Final binary
 BIN = rayTracer
