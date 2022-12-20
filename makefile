@@ -5,7 +5,7 @@ FLAGS = -std=c++11 -Wall -L $(SFML_LIB) -I $(SFML_HEADERS)
 BIN = rayTracer
 
 # Put all auto generated stuff to this build dir.
-BUILD_DIR = ./Build
+BUILD_DIR = ./build
 
 # List of all .cpp source files.
 # CPP = main.cpp $(wildcard dir1/*.cpp) $(wildcard dir2/*.cpp)
