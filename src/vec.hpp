@@ -1,5 +1,5 @@
-#ifndef vec3
-#define vec3
+#ifndef VEC3
+#define VEC3
 
 #include <cmath>
 #include <iostream>
@@ -43,6 +43,10 @@ class vec3 {
     }
 
     vec3 operator/=(const float s) {
+      return *this *= (1.0f/s);
+    }
+
+    vec3 operator/(const float s) {
       return *this *= (1.0f/s);
     }
 
