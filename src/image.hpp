@@ -19,9 +19,9 @@ int write_to_file(int image_width, int image_height, std::vector<std::vector<vec
   for (int j = 0; j < image_height; ++j) {
       for (int i = 0; i < image_width; ++i) {
 
-          int ir = static_cast<int>(255.999 * image[i][j].x);
-          int ig = static_cast<int>(255.999 * image[i][j].y);
-          int ib = static_cast<int>(255.999 * image[i][j].z);
+          int ir = static_cast<int>(image[i][j].x);
+          int ig = static_cast<int>(image[i][j].y);
+          int ib = static_cast<int>(image[i][j].z);
 
           ImageFile << ir << ' ' << ig << ' ' << ib << '\n';
       }
