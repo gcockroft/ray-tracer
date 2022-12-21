@@ -1,10 +1,16 @@
 #include <iostream>
 #include "image.hpp"
-#include "vec.hpp"
+#include "vec3.hpp"
 #include <vector>
+
 #include "main.hpp"
 #include "ray.hpp"
 #include "rayTrace.hpp"
+#include "image.hpp"
+#include "vec3.hpp"
+#include "triangle.hpp"
+#include "shape.hpp"
+
  using namespace std;
 
 
@@ -34,7 +40,7 @@ int main() {
 
   fovy = fovy * PI / 180;
   vec3 camDir = unit_vector(lookAt - camEye);
-  vec3 left = unit_vector(cross(up, camDir));
+  vec3 left = vec3(-1,0,0);
 
   float height = 2 * ((lookAt - camEye).length() * tan(fovy/2));
   float width = (image_width * height) / image_height;
@@ -44,17 +50,40 @@ int main() {
 
   vec3 topLeft = lookAt + (height/2 * up) + (width/2 * left);
   vec3 currPosition;
+  
+  vec3 a = vec3(-2,2,0);
+  vec3 b = vec3(-2,-2,0);
+  vec3 c = vec3(2,2,0);
+  
+
+  vec3 a1 = vec3(2,2,0);
+  vec3 a2 = vec3(2,-2,0);
+  vec3 a3 = vec3(-2,2,0);
+
+  Triangle t = Triangle(a,b,c);
+  Triangle t1 = Triangle(a1,a2,a3);
+  
+  vector<Triangle> shapes;
+  shapes.push_back(t);
+  shapes.push_back(t1);
+
+  float horizontalScalar;
+  float verticalScalar;
+
   ray r;
-
+  int count=1;
   for (int y = 0; y < image_height; y++) {
-
     for (int x = 0; x < image_width; x++) {
-      currPosition = topLeft - (pixelWidth/2 * left * float(x)) - (pixelHeight/2 * up * float(y));
+      // currPosition = topLeft - (pixelWidth/2 * left * float(x)) - (pixelHeight/2 * up * float(y));
+      horizontalScalar = (float(x) + 0.5f) * pixelWidth;
+      verticalScalar = (float(y) + 0.5f) * pixelHeight;
+      currPosition = topLeft - (horizontalScalar * left) - (verticalScalar * up);
+
       r.direction = unit_vector(currPosition - camEye);
       r.origin = camEye;
-
-      vec3 color = rayTrace(r , x , y);
+      vec3 color = rayTrace(r, shapes);
       image[x][y] = color;
+      count++;
     }
   }
 

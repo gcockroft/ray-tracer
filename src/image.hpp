@@ -1,8 +1,12 @@
+#ifndef IMAGE
+#define IMAGE
+
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include "vec.hpp" 
 #include <cstdio>
+
+#include "vec3.hpp" 
 
 // TODO: Another param here for image data
 int write_to_file(int image_width, int image_height, std::vector<std::vector<vec3>> image) {
@@ -29,3 +33,5 @@ int write_to_file(int image_width, int image_height, std::vector<std::vector<vec
   ImageFile.close();
   return 1;
 }
+
+#endif

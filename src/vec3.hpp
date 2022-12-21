@@ -8,7 +8,7 @@ class vec3 {
  
 
   public:
-   float x;
+    float x;
     float y;
     float z;
     
@@ -48,6 +48,8 @@ class vec3 {
       return *this *= (1.0f/s);
     }
 
+    
+
     float length() {
       float lengthSquared = (this->x * this->x) + (this->y * this->y) + (this->z * this->z);
       return sqrt(lengthSquared);
@@ -63,7 +65,7 @@ inline vec3 operator+(const vec3 &u, const vec3 &v) {
 }
 
 inline vec3 operator-(const vec3 &u, const vec3 &v) {
-  return vec3(u.x - v.x, u.y-v.y, u.x-v.z);
+  return vec3(u.x - v.x, u.y-v.y, u.z-v.z);
 }
 
 inline vec3 operator*(const vec3 &u, const vec3 &v) {
@@ -80,6 +82,10 @@ inline vec3 operator*(const float s, const vec3 &u) {
 
 inline vec3 operator/(const vec3 &u, const vec3 &v) {
   return vec3(u.x / v.x, u.y/v.y, u.x/v.z);
+}
+
+inline vec3 operator/(const vec3 &u, const float s) { 
+      return vec3(u.x / s, u.y / s, u.z /s);
 }
 
 inline float dot(const vec3 &u, const vec3 &v) {
