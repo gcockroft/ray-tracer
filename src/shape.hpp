@@ -3,11 +3,11 @@
 
 #include "ray.hpp"
 
-class Shape {
+class shape {
   public: 
-
-    Shape() {}
-    float test_intersection(ray r) {std::cout << ":(" << std::endl;}
+    shape() = default;
+    virtual float test_intersection(ray r) = 0;
+    virtual ~shape() = default;
 };
 
 #endif

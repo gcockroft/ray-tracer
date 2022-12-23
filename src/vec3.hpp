@@ -30,18 +30,21 @@ class vec3 {
       this->x += v.x;
       this->y += v.y;
       this->z += v.z;
+      return *this;
     }
 
     vec3 operator-=(const vec3 &v) {
       this->x -= v.x;
       this->y -= v.y;
       this->z -= v.z;
+      return *this;
     }
 
     vec3 operator*=(const float s) {
       this->x *= s;
       this->y *= s;
       this->z *= s;
+      return *this;
     }
 
     vec3 operator/=(const float s) {

@@ -58,14 +58,14 @@ int main() {
 
   vec3 a1 = vec3(2,2,0);
   vec3 a2 = vec3(2,-2,0);
-  vec3 a3 = vec3(-2,2,0);
+  vec3 a3 = vec3(-2,-2,0);
 
-  Triangle t = Triangle(a,b,c);
-  Triangle t1 = Triangle(a1,a2,a3);
+  triangle t = triangle(a,b,c);
+  triangle t1 = triangle(a1,a2,a3);
   
-  vector<Triangle> shapes;
-  shapes.push_back(t);
-  shapes.push_back(t1);
+  vector<shape*> shapes;
+  shapes.push_back(&t);
+  shapes.push_back(&t1);
 
   float horizontalScalar;
   float verticalScalar;
