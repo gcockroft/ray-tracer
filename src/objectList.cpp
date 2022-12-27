@@ -1,5 +1,7 @@
 #include "objectList.hpp"
 
+objectList::objectList() {}
+
 object* objectList::objectAt(int index) {
   return objectVec.at(index);
 }

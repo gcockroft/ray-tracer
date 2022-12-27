@@ -1,16 +1,4 @@
-#include <iostream>
-#include "image.hpp"
-#include "vec3.hpp"
-#include <vector>
-
 #include "main.hpp"
-#include "ray.hpp"
-#include "rayTrace.hpp"
-#include "image.hpp"
-#include "vec3.hpp"
-#include "triangle.hpp"
-#include "sphere.hpp"
-#include "object.hpp"
 
  using namespace std;
 
@@ -50,26 +38,7 @@ int main() {
   vec3 topLeft = lookAt + (height/2 * up) + (width/2 * left);
   vec3 currPosition;
   
-  vec3 a = vec3(-2,2,0);
-  vec3 b = vec3(-2,1,0);
-  vec3 c = vec3(-1,2,0);
-  
-
-  vec3 a1 = vec3(2,-1,0);
-  vec3 a2 = vec3(2,-2,0);
-  vec3 a3 = vec3(1,-2,0);
-
-  vec3 cent = vec3(0,0,0);
-  float rad = 1.0f;
-
-  triangle t = triangle(a,b,c);
-  triangle t1 = triangle(a1,a2,a3);
-  sphere s = sphere(cent, rad);
-  
-  vector<object*> objectList;
-  objectList.push_back(&t);
-  objectList.push_back(&t1);
-  objectList.push_back(&s);
+  objectList objs = initObjectList();
 
   float horizontalScalar;
   float verticalScalar;
@@ -83,7 +52,7 @@ int main() {
 
       r.direction = unit_vector(currPosition - camEye);
       r.origin = camEye;
-      vec3 color = rayTrace(r, objectList);
+      vec3 color = rayTrace(r, objs);
       image[x][y] = color;
     }
   }
