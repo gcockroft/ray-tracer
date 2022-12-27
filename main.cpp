@@ -38,7 +38,7 @@ int main() {
   vec3 topLeft = lookAt + (height/2 * up) + (width/2 * left);
   vec3 currPosition;
   
-  objectList objs = initObjectList();
+  objectList *objs = initObjectList();
 
   float horizontalScalar;
   float verticalScalar;
@@ -53,6 +53,7 @@ int main() {
       r.direction = unit_vector(currPosition - camEye);
       r.origin = camEye;
       vec3 color = rayTrace(r, objs);
+      std::cout << "fuck" << std::endl;
       image[x][y] = color;
     }
   }

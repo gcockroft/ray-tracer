@@ -1,8 +1,8 @@
 #include "rayTrace.hpp"
 
-vec3 rayTrace(ray r, objectList objs) {
+vec3 rayTrace(ray r, objectList *objs) {
     //test intersections
-    float t = objs.closestIntersection(r);
+    float t = objs->closestIntersection(r);
     
     if (!isnan(t)) {
         std::cout << t << std::endl;

@@ -6,6 +6,6 @@
 #include "sphere.hpp"
 #include "objectList.hpp"
 
-objectList initObjectList();
+objectList* initObjectList();
 
 #endif

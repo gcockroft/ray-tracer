@@ -14,9 +14,7 @@ float objectList::closestIntersection(ray r) {
   float minT = 99999999;
   float t = NAN;
   for (int i = 0; i < objectVec.size(); i++) {
-      object* curr = objectVec.at(i);
-      
-      t = curr->test_intersection(r);
+      t = objectVec.at(i)->test_intersection(r);
       if (t < minT) {
           closestIndex = i;
           minT = t;
