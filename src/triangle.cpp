@@ -37,4 +37,4 @@ float triangle::test_intersection(ray r) {
     return NAN;
     } 
     return t;
-}  
+}
