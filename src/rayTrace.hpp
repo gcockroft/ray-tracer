@@ -6,9 +6,10 @@
 #include "ray.hpp"
 #include "triangle.hpp"
 #include "light.hpp"
+#include "scene.hpp"
 #include <vector>
 
 #define backgroundColor vec3(0.55f, 0.5f, 0.8f)
-vec3 rayTrace(ray r, objectList *objs);
+vec3 rayTrace(ray r, scene *myScene);
 
 #endif

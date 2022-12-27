@@ -1,9 +1,10 @@
 #include "triangle.hpp"
 
-triangle::triangle(vec3 _a, vec3 _b, vec3 _c) {
+triangle::triangle(vec3 _a, vec3 _b, vec3 _c, int _matIndex) {
     p1 = _a;
     p2 = _b;
     p3 = _c;
+    matIndex = _matIndex;
 }
 
 // Returns distance to triangle or NaN for no intersection.

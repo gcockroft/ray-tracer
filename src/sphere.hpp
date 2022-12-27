@@ -10,7 +10,7 @@ class sphere : public object {
 		vec3 center;
 		float radius;
 
-		sphere(vec3 c, float r);
+		sphere(vec3 c, float r, int _matIndex);
 
 		float test_intersection(ray r);
 };

@@ -1,15 +1,12 @@
 #include "sphere.hpp"
 
-sphere::sphere(vec3 c, float r) {
+sphere::sphere(vec3 c, float r, int _matIndex) {
     center = c;
     radius = r;
+    matIndex = _matIndex;
 }
 
 float sphere::test_intersection(ray r) {
-    // d = dir
-    // e = origin
-    // c = center
-    // R = radius
     vec3 dir = r.direction;
     vec3 orig = r.origin;
 

@@ -8,6 +8,8 @@ class object {
     object() = default;
     virtual float test_intersection(ray r) = 0;
     virtual ~object() = default;
+  protected:
+    int matIndex;
 };
 
 #endif
