@@ -1,6 +1,6 @@
 #include "rayTrace.hpp"
 
-vec3 rayTrace(ray r, objects objs) {
+vec3 rayTrace(ray r, objectList objs) {
     //test intersections
     float t = objs.closestIntersection(r);
     

@@ -4,9 +4,9 @@
 
 #include "vec3.hpp"
 #include "ray.hpp"
-#include "shape.hpp"
+#include "object.hpp"
 
-class triangle : public shape {
+class triangle : public object {
   public:
     vec3 p1;
     vec3 p2;

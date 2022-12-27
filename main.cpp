@@ -10,7 +10,7 @@
 #include "vec3.hpp"
 #include "triangle.hpp"
 #include "sphere.hpp"
-#include "shape.hpp"
+#include "object.hpp"
 
  using namespace std;
 
@@ -66,10 +66,10 @@ int main() {
   triangle t1 = triangle(a1,a2,a3);
   sphere s = sphere(cent, rad);
   
-  vector<shape*> shapes;
-  shapes.push_back(&t);
-  shapes.push_back(&t1);
-  shapes.push_back(&s);
+  vector<object*> objectList;
+  objectList.push_back(&t);
+  objectList.push_back(&t1);
+  objectList.push_back(&s);
 
   float horizontalScalar;
   float verticalScalar;
@@ -83,7 +83,7 @@ int main() {
 
       r.direction = unit_vector(currPosition - camEye);
       r.origin = camEye;
-      vec3 color = rayTrace(r, shapes);
+      vec3 color = rayTrace(r, objectList);
       image[x][y] = color;
     }
   }

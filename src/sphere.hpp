@@ -1,11 +1,11 @@
 #ifndef SPHERE
 #define SPHERE
 
-#include "shape.hpp"
+#include "object.hpp"
 #include "vec3.hpp"
 #include "ray.hpp"
 
-class sphere : public shape {
+class sphere : public object {
 	public: 
 		vec3 center;
 		float radius;
