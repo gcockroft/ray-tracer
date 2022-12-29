@@ -56,7 +56,7 @@ int main() {
       image[x][y] = color;
     }
   }
-
+  
   // Render
   write_to_file(image_width, image_height, image);
 

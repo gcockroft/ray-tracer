@@ -47,5 +47,15 @@ vec3 rayTrace(ray r, scene *myScene, int recurseDepth) {
     res += totalDiffuse * mat.diffuseCol;
     res += totalSpecular * mat.specularCol;
 
+    if (recurseDepth < 5) {
+        ray reflected_r = ray();
+        vec3 dir = r.direction;
+        reflected_r.origin = point;
+        reflected_r.direction = dir - 2 * (dot(dir, normal)) * normal;
+
+        vec3 colorSeen = rayTrace(reflected_r, myScene, recurseDepth + 1);
+        res += mat.reflectiveCol * colorSeen;
+    }
+
     return res;
 }
