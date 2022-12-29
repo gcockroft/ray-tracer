@@ -15,5 +15,7 @@ scene* initScene();
 objectList* initObjectList();
 vector<light> initLights();
 vector<material> initMaterials();
+vec3 getCamera();
+
 
 #endif

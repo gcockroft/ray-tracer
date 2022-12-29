@@ -6,8 +6,13 @@ scene* initScene() {
     myScene->lights = initLights();
     myScene->objs = initObjectList();
     myScene->ambientLight = vec3(1,1,1);
+    myScene->camEye = getCamera();
 
     return myScene;
+}
+
+vec3 getCamera() {
+    return vec3(0,0,5);
 }
 
 vector<material> initMaterials() {
@@ -44,8 +49,8 @@ objectList* initObjectList() {
     vec3 c = vec3(-1,2,0.0f);
 
     vec3 a1 = vec3(2,-1,0.0f);
-    vec3 a2 = vec3(2,-2,0.0f);
-    vec3 a3 = vec3(1,-2,0.0f);
+    vec3 a2 = vec3(1,-2,0.0f);
+    vec3 a3 = vec3(2,-2,0.0f);
 
     vec3 cent = vec3(0,0,0);
     float rad = 1.0f;

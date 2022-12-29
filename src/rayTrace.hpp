@@ -9,6 +9,8 @@
 #include "scene.hpp"
 #include <vector>
 
+using namespace std;
+
 #define backgroundColor vec3(0.55f, 0.5f, 0.8f)
 vec3 rayTrace(ray r, scene *myScene, int recurseDepth);
 

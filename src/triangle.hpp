@@ -16,6 +16,7 @@ class triangle : public object {
 
     // Returns distance to triangle or NaN for no intersection.
     float test_intersection(ray r);
+    vec3 getNormal(vec3 point);
 };
 
 #endif

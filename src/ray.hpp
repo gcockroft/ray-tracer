@@ -26,7 +26,7 @@ class ray {
       return direction;
     }
 
-    vec3 at(double t) const {
+    vec3 at(float t) const {
       return origin + t*direction;
     }
 };

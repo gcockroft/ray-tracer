@@ -51,7 +51,18 @@ class vec3 {
       return *this *= (1.0f/s);
     }
 
-    
+    bool equals(const vec3 u) {
+      if (abs(this->x - u.x) > 0.0005f) {
+        return false;
+      }
+      if (abs(this->y - u.y) > 0.0005f) {
+        return false;
+      }
+      if (abs(this->z - u.z) > 0.0005f) {
+        return false;
+      }
+      return true;
+    }
 
     float length() {
       float lengthSquared = (this->x * this->x) + (this->y * this->y) + (this->z * this->z);
@@ -64,7 +75,7 @@ inline std::ostream& operator<<(std::ostream &out, const vec3 &v) {
 }
 
 inline vec3 operator+(const vec3 &u, const vec3 &v) {
-  return vec3(u.x + v.x, u.y+v.y, u.x+v.z);
+  return vec3(u.x + v.x, u.y+v.y, u.z+v.z);
 }
 
 inline vec3 operator-(const vec3 &u, const vec3 &v) {
@@ -72,7 +83,7 @@ inline vec3 operator-(const vec3 &u, const vec3 &v) {
 }
 
 inline vec3 operator*(const vec3 &u, const vec3 &v) {
-  return vec3(u.x * v.x, u.y*v.y, u.x*v.z);
+  return vec3(u.x * v.x, u.y*v.y, u.z*v.z);
 }
 
 inline vec3 operator*(const vec3 &u, const float s) {
@@ -84,7 +95,7 @@ inline vec3 operator*(const float s, const vec3 &u) {
 }
 
 inline vec3 operator/(const vec3 &u, const vec3 &v) {
-  return vec3(u.x / v.x, u.y/v.y, u.x/v.z);
+  return vec3(u.x / v.x, u.y/v.y, u.z/v.z);
 }
 
 inline vec3 operator/(const vec3 &u, const float s) { 

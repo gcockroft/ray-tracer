@@ -31,3 +31,7 @@ float sphere::test_intersection(ray r) {
     }
     return t_0;
 }
+
+vec3 sphere::getNormal(vec3 point) {
+    return unit_vector(point - center);
+}

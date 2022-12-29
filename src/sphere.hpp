@@ -13,6 +13,8 @@ class sphere : public object {
 		sphere(vec3 c, float r, int _matIndex);
 
 		float test_intersection(ray r);
+
+		vec3 getNormal(vec3 point);
 };
 
 #endif

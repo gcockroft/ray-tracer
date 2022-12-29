@@ -39,3 +39,7 @@ float triangle::test_intersection(ray r) {
     } 
     return t;
 }
+
+vec3 triangle::getNormal(vec3 point) {
+    return unit_vector(cross(p2-p1, p3-p1));
+}
