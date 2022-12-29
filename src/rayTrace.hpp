@@ -10,6 +10,6 @@
 #include <vector>
 
 #define backgroundColor vec3(0.55f, 0.5f, 0.8f)
-vec3 rayTrace(ray r, scene *myScene);
+vec3 rayTrace(ray r, scene *myScene, int recurseDepth);
 
 #endif

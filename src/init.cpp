@@ -5,6 +5,7 @@ scene* initScene() {
     myScene->materials = initMaterials();
     myScene->lights = initLights();
     myScene->objs = initObjectList();
+    myScene->ambientLight = vec3(1,1,1);
 
     return myScene;
 }

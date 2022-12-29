@@ -52,8 +52,7 @@ int main() {
 
       r.direction = unit_vector(currPosition - camEye);
       r.origin = camEye;
-      vec3 color = rayTrace(r, myScene);
-      std::cout << "fuck" << std::endl;
+      vec3 color = rayTrace(r, myScene, 0);
       image[x][y] = color;
     }
   }
