@@ -11,5 +11,6 @@
 #include "sphere.hpp"
 #include "object.hpp"
 #include "init.hpp"
+#include "util.hpp"
 
 #define PI 3.141592653589793238462

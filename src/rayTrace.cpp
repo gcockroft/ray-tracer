@@ -56,6 +56,5 @@ vec3 rayTrace(ray r, scene *myScene, int recurseDepth) {
     //     vec3 colorSeen = rayTrace(reflected_r, myScene, recurseDepth + 1);
     //     res += mat.reflectiveCol * colorSeen;
     // }
-
     return res;
 }

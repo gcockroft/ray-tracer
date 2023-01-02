@@ -5,8 +5,9 @@
 
 int main() {
   // Image
-  const int image_height = 256;
-  const int image_width = 256;
+  const int image_height = 512;
+  const int image_width = 512;
+  const int samples_per_pixel = 100;
 
   //Initialize pixel array
   vector<vector<vec3>> image;
@@ -28,15 +29,19 @@ int main() {
   vec3 currPosition;
   float horizontalScalar;
   float verticalScalar;
+  ray r;
   for (int y = 0; y < image_height; y++) {
     for (int x = 0; x < image_width; x++) {
-      horizontalScalar = (float(x) + 0.5f) * pixelWidth;
-      verticalScalar = (float(y) + 0.5f) * pixelHeight;
-      currPosition = cam.topLeft - (horizontalScalar * cam.left) - (verticalScalar * cam.up);
-
-      ray r = cam.getRay(currPosition);
-      vec3 color = rayTrace(r, myScene, 0);
-      image[x][y] = color;
+      vec3 pixelColor = vec3(0,0,0);
+      for (int s = 0; s < samples_per_pixel; s++) {
+        horizontalScalar = (float(x) + random_double()) * pixelWidth;
+        verticalScalar = (float(y) + random_double()) * pixelHeight;
+        currPosition = cam.topLeft - (horizontalScalar * cam.left) - (verticalScalar * cam.up);
+        r = cam.getRay(currPosition);
+        pixelColor += rayTrace(r, myScene, 0);
+      }
+      pixelColor /= samples_per_pixel;
+      image[x][y] = pixelColor;
     }
   }
   
