@@ -18,7 +18,8 @@ vector<material> initMaterials() {
     vec3 diffuseCol = vec3(0.7, 0.3, 0.2);
     vec3 specularCol = vec3(0.4,0.4,0.4);
     vec3 transparantCol = vec3(0.8,0.8,0.8);
-    vec3 reflectiveCol = vec3(0.5,0.5,0.5);
+    // vec3 reflectiveCol = vec3(0.5,0.5,0.5);
+    vec3 reflectiveCol = vec3();
 
     float shininess1 = 50;
     float refractionIndex1 = 1;

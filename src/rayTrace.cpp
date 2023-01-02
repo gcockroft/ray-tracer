@@ -51,7 +51,7 @@ vec3 rayTrace(ray r, scene *myScene, int recurseDepth) {
         vec3 dir = r.direction;
         vec3 pointToEye = unit_vector(r.origin - point);
         reflected_r.origin = point;
-        reflected_r.direction = pointToEye - 2 * (dot(pointToEye, normal)) * normal;
+        reflected_r.direction = dir - 2 * (dot(dir, normal)) * normal;
         // cout << dir << endl;
 
         vec3 colorSeen = rayTrace(reflected_r, myScene, recurseDepth + 1);
