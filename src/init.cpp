@@ -22,7 +22,7 @@ vector<material> initMaterials() {
 
     float shininess1 = 50;
     float refractionIndex1 = 1;
-    vec3 diffuseCol1 = vec3(0.6, 0.6, 0.6);
+    vec3 diffuseCol1 = vec3(0.3, 0.3, 0.3);
     vec3 specularCol1 = vec3(0.3,0.3,0.3);
     vec3 transparantCol1 = vec3(0,0,0);
     vec3 reflectiveCol1 = vec3(0.3,0.3,0.3);
@@ -37,7 +37,7 @@ vector<material> initMaterials() {
 vector<light> initLights() {
     vector<light> lights;
 
-    vec3 position = vec3(-5.0f, 0.0f, 5.0f);
+    vec3 position = vec3(-5.0f, 5.0f, 5.0f);
     vec3 color = vec3(1,1,1);
     light l1 = light(position, color);
     lights.push_back(l1);

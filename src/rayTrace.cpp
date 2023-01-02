@@ -46,15 +46,19 @@ vec3 rayTrace(ray r, scene *myScene, int recurseDepth) {
     res += totalDiffuse * mat.diffuseCol;
     res += totalSpecular * mat.specularCol;
 
-    // if (recurseDepth < 5) {
-    //     ray reflected_r = ray();
-    //     vec3 dir = r.direction;
-    //     reflected_r.origin = point;
-    //     reflected_r.direction = dir - 2 * (dot(dir, normal)) * normal;
-    //     cout << dir << endl;
+    if (recurseDepth < 5) {
+        ray reflected_r = ray();
+        vec3 dir = r.direction;
+        vec3 pointToEye = unit_vector(r.origin - point);
+        reflected_r.origin = point;
+        reflected_r.direction = pointToEye - 2 * (dot(pointToEye, normal)) * normal;
+        // cout << dir << endl;
 
-    //     vec3 colorSeen = rayTrace(reflected_r, myScene, recurseDepth + 1);
-    //     res += mat.reflectiveCol * colorSeen;
-    // }
+        vec3 colorSeen = rayTrace(reflected_r, myScene, recurseDepth + 1);
+        if (!colorSeen.equals(backgroundColor)) {
+            res += mat.reflectiveCol * colorSeen;
+        }
+        
+    }
     return res;
 }
