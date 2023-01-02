@@ -1,18 +1,13 @@
 #include "init.hpp"
 
-scene* initScene() {
-    scene* myScene = new scene();
+scene* initScene(vec3 camEye) {
+    scene* myScene = new scene(camEye);
     myScene->materials = initMaterials();
     myScene->lights = initLights();
     myScene->objs = initObjectList();
     myScene->ambientLight = vec3(1,1,1);
-    myScene->camEye = getCamera();
 
     return myScene;
-}
-
-vec3 getCamera() {
-    return vec3(0,0,5);
 }
 
 vector<material> initMaterials() {
@@ -42,7 +37,7 @@ vector<material> initMaterials() {
 vector<light> initLights() {
     vector<light> lights;
 
-    vec3 position = vec3(5.0f, 5.0f, 5.0f);
+    vec3 position = vec3(-5.0f, 0.0f, 5.0f);
     vec3 color = vec3(1,1,1);
     light l1 = light(position, color);
     lights.push_back(l1);
@@ -62,7 +57,7 @@ objectList* initObjectList() {
     vec3 a3 = vec3(3,2,0);
 
     vec3 cent = vec3(0,0,0);
-    float rad = 0.6f;
+    float rad = 0.5f;
 
     triangle *t = new triangle(a,b,c, 1);
     triangle *t1 = new triangle(a1,a2,a3, 1);
@@ -71,8 +66,6 @@ objectList* initObjectList() {
     list->append(t);
     list->append(t1);
     list->append(s);
-
-    std::cout << t->p1 << std::endl;
 
     return list;
 }

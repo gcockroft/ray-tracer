@@ -11,7 +11,7 @@
 
 using namespace std;
 
-scene* initScene();
+scene* initScene(vec3 camEye);
 objectList* initObjectList();
 vector<light> initLights();
 vector<material> initMaterials();

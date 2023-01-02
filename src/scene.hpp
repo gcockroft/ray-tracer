@@ -15,8 +15,10 @@ class scene {
         vector<material> materials;
         objectList *objs;
         vec3 ambientLight;
-
         vec3 camEye;
+        scene(vec3 _camEye) {
+            camEye = _camEye;
+        }
 };
 
 #endif

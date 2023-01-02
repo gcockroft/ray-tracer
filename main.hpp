@@ -2,6 +2,7 @@
 #include "image.hpp"
 #include "vec3.hpp"
 #include <vector>
+#include "camera.hpp"
 #include "ray.hpp"
 #include "rayTrace.hpp"
 #include "image.hpp"
