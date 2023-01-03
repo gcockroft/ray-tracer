@@ -85,7 +85,6 @@ vec3 refract(vec3 incident, vec3 normal, float ior) {
 
     // refraction_ratio * sin_theta > 1.0f
     if (refraction_ratio * sin_theta > 1.0f) {
-        std::cout << "fuck" << std::endl;
     } else {
         // Must refract
         float sin_theta_t_2 = pow(refraction_ratio, 2) * (1 - pow(cos_theta_i, 2));
