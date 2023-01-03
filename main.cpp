@@ -5,9 +5,9 @@
 
 int main() {
   // Image
-  const int image_height = 512;
-  const int image_width = 512;
-  const int samples_per_pixel = 50;
+  const int image_height = 256;
+  const int image_width = 256;
+  const int samples_per_pixel = 1;
 
   //Initialize pixel array
   vector<vector<vec3>> image;
@@ -42,7 +42,9 @@ int main() {
       }
       pixelColor /= samples_per_pixel;
       image[x][y] = pixelColor;
+      
     }
+    std::cout << y << std::endl;
   }
   
   // Render

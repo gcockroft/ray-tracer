@@ -13,33 +13,35 @@ scene* initScene(vec3 camEye) {
 vector<material> initMaterials() {
     vector<material> materials;
 
+    vec3 diffuse = vec3(0.2f, 0.7f, 0.2f);
+    vec3 specular = vec3(0.2f, 0.7f, 0.2f);
+    vec3 reflective = vec3();
     float shininess = 50;
-    float refractionIndex = 1;
-    vec3 diffuseCol = vec3(0.7, 0.3, 0.2);
-    vec3 specularCol = vec3(0.4,0.4,0.4);
-    vec3 transparantCol = vec3(0.8,0.8,0.8);
-    // vec3 reflectiveCol = vec3(0.5,0.5,0.5);
-    vec3 reflectiveCol = vec3();
+    vec3 transparent = vec3();
+    float ior = 0.6f;
 
-    float shininess1 = 50;
-    float refractionIndex1 = 1;
-    vec3 diffuseCol1 = vec3(0.3, 0.3, 0.3);
-    vec3 specularCol1 = vec3(0.3,0.3,0.3);
-    vec3 transparantCol1 = vec3(0,0,0);
-    vec3 reflectiveCol1 = vec3(0.3,0.3,0.3);
+    material mat1 = material(diffuse, specular, transparent, reflective, shininess, ior);
 
-    material m1 = material(diffuseCol,specularCol,transparantCol, reflectiveCol, shininess, refractionIndex);
-    material m2 = material(diffuseCol1, specularCol1, transparantCol1, reflectiveCol1, shininess1, refractionIndex1);
-    materials.push_back(m1);
-    materials.push_back(m2);
+    diffuse = vec3(0.1f,0.1f,0.1f);
+    specular = vec3(0.1f,0.1f,0.1f);
+    reflective = vec3(0.1f,0.1f,0.1f);
+    shininess = 50;
+    transparent = vec3(0.9f,0.9f,0.9f);
+    ior = 1.5f;
+
+    material mat2 = material(diffuse, specular, transparent, reflective, shininess, ior);    
+
+    materials.push_back(mat1);
+    materials.push_back(mat2);
+    
     return materials;
 }
 
 vector<light> initLights() {
     vector<light> lights;
 
-    vec3 position = vec3(-5.0f, 5.0f, 5.0f);
-    vec3 color = vec3(1,1,1);
+    vec3 position = vec3(0.0f, 4.0f, 0.0f);
+    vec3 color = vec3(0.6f,0.6f,0.6f);
     light l1 = light(position, color);
     lights.push_back(l1);
 
@@ -49,16 +51,16 @@ vector<light> initLights() {
 objectList* initObjectList() {
     objectList *list = new objectList();
 
-    vec3 a = vec3(0,2,-3);
-    vec3 b = vec3(0,-2,-3);
-    vec3 c = vec3(3,-2,0);
+    vec3 a = vec3(5,5,1);
+    vec3 b = vec3(-5,5,1);
+    vec3 c = vec3(5,-5,1);
 
-    vec3 a1 = vec3(0,2,-3);
-    vec3 a2 = vec3(3,-2,0);
-    vec3 a3 = vec3(3,2,0);
+    vec3 a1 = vec3(5,5,0);
+    vec3 a2 = vec3(5,-5,0);
+    vec3 a3 = vec3(-5,5,0);
 
-    vec3 cent = vec3(0,0,0);
-    float rad = 0.5f;
+    vec3 cent = vec3(0,0,-3);
+    float rad = 0.5;
 
     triangle *t = new triangle(a,b,c, 1);
     triangle *t1 = new triangle(a1,a2,a3, 1);
@@ -67,6 +69,8 @@ objectList* initObjectList() {
     list->append(t);
     list->append(t1);
     list->append(s);
+
+
 
     return list;
 }

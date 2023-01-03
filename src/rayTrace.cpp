@@ -47,18 +47,50 @@ vec3 rayTrace(ray r, scene *myScene, int recurseDepth) {
     res += totalSpecular * mat.specularCol;
 
     if (recurseDepth < 5) {
+        // Reflection
         ray reflected_r = ray();
         vec3 dir = r.direction;
         vec3 pointToEye = unit_vector(r.origin - point);
         reflected_r.origin = point;
         reflected_r.direction = dir - 2 * (dot(dir, normal)) * normal;
-        // cout << dir << endl;
 
         vec3 colorSeen = rayTrace(reflected_r, myScene, recurseDepth + 1);
+
+        // Refraction
+        
+
         if (!colorSeen.equals(backgroundColor)) {
             res += mat.reflectiveCol * colorSeen;
         }
-        
+
+        vec3 refracted = refract(r.direction, normal, mat.refractionIndex);
+        ray refractRay = ray(point, refracted);
+        vec3 colorSeen1 = rayTrace(refractRay, myScene, recurseDepth + 1);
+
+        // std::cout << r.direction << "    " << refracted << std::endl;
+
+        if (!colorSeen1.equals(backgroundColor)) {
+            res += mat.transparentCol * colorSeen1;
+        }
     }
     return res;
+}
+
+// Take the incident ray, normal vector, and 
+vec3 refract(vec3 incident, vec3 normal, float ior) {
+    float cos_theta_i = dot(incident, normal);
+    float refraction_ratio = cos_theta_i < 0 ? ior : 1.0f/ior;
+    float sin_theta = sqrt(1 - pow(cos_theta_i, 2));
+    vec3 t;
+
+    // refraction_ratio * sin_theta > 1.0f
+    if (refraction_ratio * sin_theta > 1.0f) {
+        std::cout << "fuck" << std::endl;
+    } else {
+        // Must refract
+        float sin_theta_t_2 = pow(refraction_ratio, 2) * (1 - pow(cos_theta_i, 2));
+        t = pow(refraction_ratio, 2) * incident + (refraction_ratio * cos_theta_i - sqrt(1 - sin_theta_t_2)) * normal;
+    }
+    
+    return unit_vector(t);
 }

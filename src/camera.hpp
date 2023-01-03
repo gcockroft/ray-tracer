@@ -18,7 +18,7 @@ class camera {
     camera() {}
     camera(int image_height, int image_width) {
       fovy = 45.0f * 3.14159265358979323 / 180;
-      camEye = vec3(0.0f, 0.0f, 5.0f);
+      camEye = vec3(0.0f, 0.0f, 3.0f);
       lookAt = vec3(0.0f, 0.0f, 0.0f);
       up = vec3(0.0f, 1.0f, 0.0f);
       left = vec3(-1.0f, 0.0f, 0.0f);
