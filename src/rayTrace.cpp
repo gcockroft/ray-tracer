@@ -48,29 +48,33 @@ vec3 rayTrace(ray r, scene *myScene, int recurseDepth) {
 
     if (recurseDepth < 5) {
         // Reflection
-        ray reflected_r = ray();
-        vec3 dir = r.direction;
-        vec3 pointToEye = unit_vector(r.origin - point);
-        reflected_r.origin = point;
-        reflected_r.direction = dir - 2 * (dot(dir, normal)) * normal;
+        if (!mat.reflectiveCol.equals(vec3())) {
+            ray reflected_r = ray();
+            vec3 dir = r.direction;
+            vec3 pointToEye = unit_vector(r.origin - point);
+            reflected_r.origin = point;
+            reflected_r.direction = dir - 2 * (dot(dir, normal)) * normal;
 
-        vec3 colorSeen = rayTrace(reflected_r, myScene, recurseDepth + 1);
+            vec3 colorSeen = rayTrace(reflected_r, myScene, recurseDepth + 1);
 
-        // Refraction
-        
+            // Refraction
+            
 
-        if (!colorSeen.equals(backgroundColor)) {
-            res += mat.reflectiveCol * colorSeen;
+            if (!colorSeen.equals(backgroundColor)) {
+                res += mat.reflectiveCol * colorSeen;
+            }
         }
 
-        vec3 refracted = refract(r.direction, normal, mat.refractionIndex);
-        ray refractRay = ray(point, refracted);
-        vec3 colorSeen1 = rayTrace(refractRay, myScene, recurseDepth + 1);
+        if (!mat.transparentCol.equals(vec3())) {
+            vec3 refracted = refract1(r.direction, normal, mat.refractionIndex);
+            ray refractRay = ray(point, refracted);
+            vec3 colorSeen1 = rayTrace(refractRay, myScene, recurseDepth + 1);
 
-        // std::cout << r.direction << "    " << refracted << std::endl;
+            // std::cout << r.direction << "    " << refracted << std::endl;
 
-        if (!colorSeen1.equals(backgroundColor)) {
-            res += mat.transparentCol * colorSeen1;
+            if (!colorSeen1.equals(backgroundColor)) {
+                res += mat.transparentCol * colorSeen1;
+            }
         }
     }
     return res;
@@ -93,3 +97,19 @@ vec3 refract(vec3 incident, vec3 normal, float ior) {
     
     return unit_vector(t);
 }
+
+vec3 refract1(vec3 incident, vec3 normal, float ior) {
+    float entry_angle;
+    float exit_angle;
+    if (dot(incident, normal) < 0.0f) {
+        entry_angle = acos(dot(incident, -normal));
+    } else {
+        entry_angle = acos(dot(incident, normal));
+        ior = 1.0f / ior;
+        normal = -normal;
+    }
+
+    exit_angle = entry_angle * ior;
+    return unit_vector( ior * (incident + normal * cos(entry_angle)) - normal * cos(exit_angle) );
+}
+    

@@ -27,7 +27,7 @@ vector<material> initMaterials() {
     reflective = vec3(0.1f,0.1f,0.1f);
     shininess = 50;
     transparent = vec3(0.9f,0.9f,0.9f);
-    ior = 1.5f;
+    ior = 0.7f;
 
     material mat2 = material(diffuse, specular, transparent, reflective, shininess, ior);    
 
@@ -56,21 +56,20 @@ objectList* initObjectList() {
     vec3 c = vec3(5,-5,1);
 
     vec3 a1 = vec3(5,5,0);
-    vec3 a2 = vec3(5,-5,0);
-    vec3 a3 = vec3(-5,5,0);
+    vec3 b1 = vec3(5,-5,0);
+    vec3 c1 = vec3(-5,5,0);
+    
 
     vec3 cent = vec3(0,0,-3);
-    float rad = 0.5;
+    float rad = 2;
 
     triangle *t = new triangle(a,b,c, 1);
-    triangle *t1 = new triangle(a1,a2,a3, 1);
+    triangle *t1 = new triangle(a1,b1,c1,1);
     sphere *s = new sphere(cent, rad, 0);
     
     list->append(t);
     list->append(t1);
     list->append(s);
-
-
 
     return list;
 }
