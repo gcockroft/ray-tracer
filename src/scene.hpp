@@ -16,6 +16,7 @@ class scene {
         vector<material> materials;
         objectList *objs;
         vec3 ambientLight;
+        vec3 backgroundColor;
         camera cam;
 };
 

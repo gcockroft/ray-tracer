@@ -2,6 +2,7 @@
 
 scene* initScene() {
     scene* myScene = new scene();
+    myScene->backgroundColor = vec3(0.05f,0.05f,0.05f);
     myScene->materials = initMaterials();
     myScene->lights = initLights();
     myScene->objs = initObjectList();
@@ -83,5 +84,7 @@ camera initCamera() {
     vec3 lookAt = vec3(0.0f, 2.0f, 0.0f);
     vec3 up = vec3(0,1,0);
 
-    return camera(image_height, image_width, fovy, camEye, lookAt, up);
+    // camera(image_height, image_width, fovy, camEye, lookAt, up);
+    // camera()
+    return camera();
 }

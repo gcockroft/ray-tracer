@@ -33,11 +33,11 @@ class camera {
     }
 
     camera(int image_height, int image_width, float fovy, vec3 camEye, vec3 lookAt, vec3 up) {
-      fovy = fovy * PI / 180;
-      camEye = camEye;
-      lookAt = lookAt;
-      up = up;
-      left = cross(up, lookAt);
+      this->fovy = fovy * PI / 180;
+      this->camEye = camEye;
+      this->lookAt = lookAt;
+      this->up = up;
+      left = unit_vector(cross(up, lookAt));
 
       screenHeight = 2 * ((lookAt - camEye).length() * tan(fovy/2));
       screenWidth = (image_width * screenHeight) / image_height;

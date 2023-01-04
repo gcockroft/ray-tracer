@@ -4,11 +4,12 @@ vec3 rayTrace(ray r, scene *myScene, int recurseDepth) {
     objectList *objs = myScene->objs;
     vector<material> mats = myScene->materials;
     vector<light> lights = myScene->lights;
+    vec3 backgroundColor = myScene->backgroundColor;
 
     //test intersections
     float t = objs->closestIntersection(r);
     if (isnan(t)) {
-        return backgroundColor;
+        return myScene->backgroundColor;
     }
 
     object* object = objs->getClosest();
@@ -58,8 +59,6 @@ vec3 rayTrace(ray r, scene *myScene, int recurseDepth) {
             vec3 colorSeen = rayTrace(reflected_r, myScene, recurseDepth + 1);
 
             // Refraction
-            
-
             if (!colorSeen.equals(backgroundColor)) {
                 res += mat.reflectiveCol * colorSeen;
             }
