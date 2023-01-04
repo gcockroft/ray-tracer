@@ -8,7 +8,7 @@ vec3 rayTrace(ray r, scene *myScene, int recurseDepth) {
     //test intersections
     float t = objs->closestIntersection(r);
     if (isnan(t)) {
-        return backgroundColor;
+        return myScene->backgroundColor;
     }
 
     object* object = objs->getClosest();

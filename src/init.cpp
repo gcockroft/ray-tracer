@@ -2,6 +2,7 @@
 
 scene* initScene(vec3 camEye) {
     scene* myScene = new scene(camEye);
+    myScene->backgroundColor = vec3(0.55f, 0.5f, 0.8f);
     myScene->materials = initMaterials();
     myScene->lights = initLights();
     myScene->objs = initObjectList();

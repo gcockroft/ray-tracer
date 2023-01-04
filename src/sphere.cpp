@@ -35,3 +35,7 @@ float sphere::test_intersection(ray r) {
 vec3 sphere::getNormal(vec3 point) {
     return unit_vector(point - center);
 }
+
+vec3 sphere::getTextureCoordinates(ray r) {
+    return vec3();
+}

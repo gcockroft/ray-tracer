@@ -16,6 +16,7 @@ class scene {
         objectList *objs;
         vec3 ambientLight;
         vec3 camEye;
+        vec3 backgroundColor;
         scene(vec3 _camEye) {
             camEye = _camEye;
         }
