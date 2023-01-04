@@ -25,7 +25,7 @@ vec3 rayTrace(ray r, scene *myScene, int recurseDepth) {
     float lightT;
     ray lightRay;
     vec3 toLight;
-    vec3 e = unit_vector(myScene->camEye - point);
+    vec3 e = unit_vector(myScene->cam.camEye - point);
     vec3 totalDiffuse = vec3();
     vec3 totalSpecular = vec3();
     for (int i = 0; i < lights.size(); i++) {

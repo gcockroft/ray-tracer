@@ -2,6 +2,7 @@
 #define INIT
 
 #include "vec3.hpp"
+#include "camera.hpp"
 #include "triangle.hpp"
 #include "sphere.hpp"
 #include "objectList.hpp"
@@ -11,7 +12,8 @@
 
 using namespace std;
 
-scene* initScene(vec3 camEye);
+scene* initScene();
+camera initCamera();
 objectList* initObjectList();
 vector<light> initLights();
 vector<material> initMaterials();

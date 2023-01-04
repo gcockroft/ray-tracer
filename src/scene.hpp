@@ -2,6 +2,7 @@
 #define SCENE
 
 #include <vector>
+#include "camera.hpp"
 #include "light.hpp"
 #include "material.hpp"
 #include "objectList.hpp"
@@ -15,10 +16,7 @@ class scene {
         vector<material> materials;
         objectList *objs;
         vec3 ambientLight;
-        vec3 camEye;
-        scene(vec3 _camEye) {
-            camEye = _camEye;
-        }
+        camera cam;
 };
 
 #endif

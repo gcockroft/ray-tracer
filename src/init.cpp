@@ -1,11 +1,12 @@
 #include "init.hpp"
 
-scene* initScene(vec3 camEye) {
-    scene* myScene = new scene(camEye);
+scene* initScene() {
+    scene* myScene = new scene();
     myScene->materials = initMaterials();
     myScene->lights = initLights();
     myScene->objs = initObjectList();
     myScene->ambientLight = vec3(1,1,1);
+    myScene->cam = initCamera();
 
     return myScene;
 }
@@ -63,13 +64,24 @@ objectList* initObjectList() {
     vec3 cent = vec3(0,0,-3);
     float rad = 2;
 
-    triangle *t = new triangle(a,b,c, 1);
+    triangle *t = new triangle(a,b,c,1);
     triangle *t1 = new triangle(a1,b1,c1,1);
-    sphere *s = new sphere(cent, rad, 0);
+    sphere *s = new sphere(cent,rad,0);
     
     list->append(t);
     list->append(t1);
     list->append(s);
 
     return list;
+}
+
+camera initCamera() {
+    int image_height = 405;
+    int image_width = 720;
+    float fovy = 45.0f;
+    vec3 camEye = vec3(0.0f, 2.0f, 6.0f);
+    vec3 lookAt = vec3(0.0f, 2.0f, 0.0f);
+    vec3 up = vec3(0,1,0);
+
+    return camera(image_height, image_width, fovy, camEye, lookAt, up);
 }

@@ -18,10 +18,9 @@ int main() {
     }
   }
 
-  // Provide camera with image height to calculate screen dimensmions.
-  camera cam(image_height, image_width); 
-  scene* myScene = initScene(cam.camEye);
-  
+  // Init camera, materials, objects, and lights.
+  scene* myScene = initScene();
+  camera cam = myScene->cam;
   //In world height and width of pixel
   float pixelWidth = cam.screenWidth / image_width;
   float pixelHeight = cam.screenHeight / image_height;
