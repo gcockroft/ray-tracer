@@ -33,15 +33,15 @@ class camera {
     }
 
     camera(int image_height, int image_width, float fovy, vec3 camEye, vec3 lookAt, vec3 up) {
-      this->fovy = fovy * PI / 180;
-      this->camEye = camEye;
-      this->lookAt = lookAt;
-      this->up = up;
-      left = unit_vector(cross(up, lookAt));
+      camera::fovy = fovy * PI / 180;
+      camera::camEye = camEye;
+      camera::lookAt = lookAt;
+      camera::up = up;
+      camera::left = unit_vector(cross(up, lookAt));
 
-      screenHeight = 2 * ((lookAt - camEye).length() * tan(fovy/2));
-      screenWidth = (image_width * screenHeight) / image_height;
-      topLeft = lookAt + (screenHeight/2 * up) + (screenWidth/2 * left);
+      camera::screenHeight = 2 * ((lookAt - camEye).length() * tan(fovy/2));
+      camera::screenWidth = (image_width * screenHeight) / image_height;
+      camera::topLeft = lookAt + (screenHeight/2 * up) + (screenWidth/2 * left);
     };
 
     ray getRay(vec3 pos) {

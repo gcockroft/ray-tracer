@@ -93,7 +93,7 @@ objectList* initObjectList() {
     c = vec3(1,0,-3);
     triangle *pyramid_t3 = new triangle(a,b,c,1);
 
-    vec3 cent = vec3(-0.0f, -1.0f, 0.5f);
+    vec3 cent = vec3(-1.0f, 0.5f, -1.0f);
     float rad = 0.5f;
     sphere *s0 = new sphere(cent,rad,1);
 
