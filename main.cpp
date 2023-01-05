@@ -5,8 +5,8 @@
 
 int main() {
   // Image
-  const int image_height = 405;
-  const int image_width = 720;
+  const int image_height = 256;
+  const int image_width = 256;
   const int samples_per_pixel = 50;
 
   //Initialize pixel array

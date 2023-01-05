@@ -2,12 +2,12 @@
 
 scene* initScene() {
     scene* myScene = new scene();
-    myScene->backgroundColor = vec3(0.05f,0.05f,0.05f);
+    myScene->backgroundColor = vec3(0.3f,0.3f,0.3f);
     myScene->materials = initMaterials();
     myScene->lights = initLights();
     myScene->objs = initObjectList();
     myScene->ambientLight = vec3(1,1,1);
-    myScene->cam = initCamera();
+    myScene->cam = camera();
 
     return myScene;
 }
