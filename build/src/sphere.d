@@ -1,2 +1,2 @@
-build/src/sphere.o: src/sphere.cpp src/sphere.hpp src/object.hpp \
-  src/ray.hpp src/vec3.hpp
+build/src/sphere.o: src/sphere.cpp headers/sphere.hpp headers/object.hpp \
+  headers/ray.hpp headers/vec3.hpp

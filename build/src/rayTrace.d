@@ -1,3 +1,4 @@
-build/src/rayTrace.o: src/rayTrace.cpp src/rayTrace.hpp src/vec3.hpp \
-  src/objectList.hpp src/object.hpp src/ray.hpp src/triangle.hpp \
-  src/light.hpp src/scene.hpp src/camera.hpp src/material.hpp
+build/src/rayTrace.o: src/rayTrace.cpp headers/rayTrace.hpp \
+  headers/vec3.hpp headers/objectList.hpp headers/object.hpp \
+  headers/ray.hpp headers/triangle.hpp headers/light.hpp \
+  headers/scene.hpp headers/camera.hpp headers/material.hpp

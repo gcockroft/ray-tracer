@@ -1,3 +1,4 @@
-build/src/init.o: src/init.cpp src/init.hpp src/vec3.hpp src/camera.hpp \
-  src/ray.hpp src/triangle.hpp src/object.hpp src/sphere.hpp \
-  src/objectList.hpp src/light.hpp src/material.hpp src/scene.hpp
+build/src/init.o: src/init.cpp headers/init.hpp headers/vec3.hpp \
+  headers/camera.hpp headers/ray.hpp headers/triangle.hpp \
+  headers/object.hpp headers/sphere.hpp headers/objectList.hpp \
+  headers/light.hpp headers/material.hpp headers/scene.hpp

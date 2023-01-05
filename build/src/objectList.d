@@ -1,2 +1,2 @@
-build/src/objectList.o: src/objectList.cpp src/objectList.hpp \
-  src/object.hpp src/ray.hpp src/vec3.hpp
+build/src/objectList.o: src/objectList.cpp headers/objectList.hpp \
+  headers/object.hpp headers/ray.hpp headers/vec3.hpp

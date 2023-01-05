@@ -39,7 +39,7 @@ $(BUILD_DIR)/%.o : %.cpp
 	@mkdir -p $(@D)
 # The -MMD flags additionaly creates a .d file with
 # the same name as the .o file.
-	$(GPP) $(FLAGS) -MMD -c $< -I src/ -o $@
+	$(GPP) $(FLAGS) -MMD -c $< -I headers/ -o $@
 
 .PHONY : clean
 clean :

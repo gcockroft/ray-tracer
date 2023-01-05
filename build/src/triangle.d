@@ -1,2 +1,2 @@
-build/src/triangle.o: src/triangle.cpp src/triangle.hpp src/vec3.hpp \
-  src/ray.hpp src/object.hpp
+build/src/triangle.o: src/triangle.cpp headers/triangle.hpp \
+  headers/vec3.hpp headers/ray.hpp headers/object.hpp
