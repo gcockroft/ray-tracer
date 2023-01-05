@@ -12,12 +12,11 @@
 
 using namespace std;
 
-scene* initScene();
-camera initCamera();
+scene* initScene(int image_height, int image_width);
+camera initCamera(int image_height, int image_width);
 objectList* initObjectList();
 vector<light> initLights();
 vector<material> initMaterials();
-vec3 getCamera();
 
 
 #endif

@@ -1,8 +1,6 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
-#define PI 3.1415926535897932384626433832795
-
 #include "vec3.hpp"
 #include "ray.hpp"
 
@@ -20,6 +18,7 @@ class camera {
     camera() {
       int image_width = 256;
       int image_height = 256;
+      float PI = 3.1415926535897932384626433832795;
 
       fovy = 45.0f * (float)PI / 180;
       camEye = vec3(0.0f, 0.0f, 3.0f);
@@ -33,11 +32,15 @@ class camera {
     }
 
     camera(int image_height, int image_width, float fovy, vec3 camEye, vec3 lookAt, vec3 up) {
+      float PI = 3.1415926535897932384626433832795;
+      std::cout << up << std::endl;
       camera::fovy = fovy * PI / 180;
       camera::camEye = camEye;
       camera::lookAt = lookAt;
       camera::up = up;
-      camera::left = unit_vector(cross(up, lookAt));
+      camera::left = unit_vector(cross(up, lookAt - camEye));
+
+      std::cout << camera::up << std::endl;
 
       camera::screenHeight = 2 * ((lookAt - camEye).length() * tan(fovy/2));
       camera::screenWidth = (image_width * screenHeight) / image_height;
@@ -51,5 +54,9 @@ class camera {
       return r;
     };
 };
+
+inline std::ostream& operator<<(std::ostream &out, const camera cam) {
+    return out << cam.screenHeight << ' ' << cam.screenWidth << ' ' << std::endl << " camEye: " << cam.camEye << " lookAt: " << cam.lookAt << " up: " << cam.up << " left: " << cam.left << " topLeft: " << cam.topLeft << std::endl << cam.fovy;
+}
 
 #endif

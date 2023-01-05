@@ -5,8 +5,6 @@
 
 int main() {
   // Image
-  const int image_height = 256;
-  const int image_width = 256;
   const int samples_per_pixel = 50;
 
   //Initialize pixel array
@@ -19,10 +17,9 @@ int main() {
   }
 
   // Init camera, materials, objects, and lights.
-  scene* myScene = initScene();
+  scene* myScene = initScene(image_height, image_width);
   camera cam = myScene->cam;
-  std::cout << cam.screenWidth << std::endl;
-  std::cout << cam.screenHeight << std::endl;
+  std::cout << cam << std::endl;
   //In world height and width of pixel
   float pixelWidth = cam.screenWidth / image_width;
   float pixelHeight = cam.screenHeight / image_height;

@@ -1,13 +1,13 @@
 #include "init.hpp"
 
-scene* initScene() {
+scene* initScene(int image_height, int image_width) {
     scene* myScene = new scene();
     myScene->backgroundColor = vec3(0.3f,0.3f,0.3f);
     myScene->materials = initMaterials();
     myScene->lights = initLights();
     myScene->objs = initObjectList();
     myScene->ambientLight = vec3(1,1,1);
-    myScene->cam = camera();
+    myScene->cam = initCamera(image_height, image_width);
 
     return myScene;
 }
@@ -63,14 +63,14 @@ vector<light> initLights() {
 objectList* initObjectList() {
     objectList *list = new objectList();
 
-    vec3 a = vec3(-10,0,-10);
-    vec3 b = vec3(-10,0,10);
-    vec3 c = vec3(10,0,-10);
+    vec3 a = vec3(-50,0,-50);
+    vec3 b = vec3(-50,0,50);
+    vec3 c = vec3(50,0,-50);
     triangle *ground_t0 = new triangle(a,b,c,0);
 
-    a = vec3(-10,0,-10);
-    b = vec3(10,0,-10);
-    c = vec3(10,0,-10);
+    a = vec3(50,0,-50);
+    b = vec3(-50,0,50);
+    c = vec3(50,0,50);
     triangle *ground_t1 = new triangle(a,b,c,0);
 
     a = vec3(3,3,-3);
@@ -108,13 +108,14 @@ objectList* initObjectList() {
     return list;
 }
 
-camera initCamera() {
-    int image_height = 405;
-    int image_width = 720;
+camera initCamera(int image_height, int image_width) {
+    int img_height = image_height;
+    int img_width = image_width;
     float fovy = 45.0f;
-    vec3 camEye = vec3(0.0f, 1.0f, 6.0f);
-    vec3 lookAt = vec3(0.0f, 1.0f, 0.0f);
-    vec3 up = vec3(0,1,0);
+    vec3 *camEye = new vec3(0.0f, 1.0f, 6.0f);
+    vec3 *lookAt = new vec3(0.0f, 0.0f, 0.0f);
+    vec3 *up = new vec3(0,1,0);
 
-    return camera(image_height, image_width, fovy, camEye, lookAt, up);
+    camera cam = camera(img_height, img_width, fovy, *camEye, *lookAt, *up);
+    return cam;
 }

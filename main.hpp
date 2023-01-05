@@ -14,3 +14,5 @@
 #include "util.hpp"
 
 #define PI 3.141592653589793238462
+#define image_height 405
+#define image_width 720

@@ -52,7 +52,6 @@ vec3 rayTrace(ray r, scene *myScene, int recurseDepth) {
         if (!mat.reflectiveCol.equals(vec3())) {
             ray reflected_r = ray();
             vec3 dir = r.direction;
-            vec3 pointToEye = unit_vector(r.origin - point);
             reflected_r.origin = point;
             reflected_r.direction = dir - 2 * (dot(dir, normal)) * normal;
 
