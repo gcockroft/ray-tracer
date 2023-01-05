@@ -76,7 +76,7 @@ vec3 rayTrace(ray r, scene *myScene, int recurseDepth) {
             }
         }
     }
-    cout << res << endl;
+    // cout << res << endl;
     return res;
 }
 

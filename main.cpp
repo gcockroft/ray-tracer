@@ -27,6 +27,7 @@ int main() {
   float pixelWidth = cam.screenWidth / image_width;
   float pixelHeight = cam.screenHeight / image_height;
    
+  
   vec3 currPosition;
   float horizontalScalar;
   float verticalScalar;
@@ -44,8 +45,11 @@ int main() {
       pixelColor /= samples_per_pixel;
       image[y][x] = pixelColor;
     }
-    cout << y << endl;
+    if (y % (int(image_height/20)) == 0) {
+      cout << "\u2593" << flush;
+    }
   }
+  cout << endl;
   
   // Render
   write_to_file(image_width, image_height, image);
