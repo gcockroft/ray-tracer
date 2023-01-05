@@ -15,12 +15,21 @@ scene* initScene() {
 vector<material> initMaterials() {
     vector<material> materials;
 
-    vec3 diffuse = vec3(0.2f, 0.7f, 0.2f);
-    vec3 specular = vec3(0.2f, 0.7f, 0.2f);
+    vec3 diffuse = vec3(1.0f, 1.0f, 1.0f);
+    vec3 specular = vec3(0.94f, 0.93f, 0.90f);
     vec3 reflective = vec3();
     float shininess = 50;
     vec3 transparent = vec3();
     float ior = 0.6f;
+
+    material mat0 = material(diffuse, specular, transparent, reflective, shininess, ior);
+
+    diffuse = vec3(0.94f, 0.93f, 0.90f);
+    specular = vec3(0.94f, 0.93f, 0.90f);
+    reflective = vec3();
+    shininess = 50;
+    transparent = vec3();
+    ior = 0.6f;
 
     material mat1 = material(diffuse, specular, transparent, reflective, shininess, ior);
 
@@ -33,6 +42,7 @@ vector<material> initMaterials() {
 
     material mat2 = material(diffuse, specular, transparent, reflective, shininess, ior);    
 
+    materials.push_back(mat0);
     materials.push_back(mat1);
     materials.push_back(mat2);
     
@@ -53,25 +63,47 @@ vector<light> initLights() {
 objectList* initObjectList() {
     objectList *list = new objectList();
 
-    vec3 a = vec3(5,5,1);
-    vec3 b = vec3(-5,5,1);
-    vec3 c = vec3(5,-5,1);
+    vec3 a = vec3(-10,0,-10);
+    vec3 b = vec3(-10,0,10);
+    vec3 c = vec3(10,0,-10);
+    triangle *ground_t0 = new triangle(a,b,c,0);
 
-    vec3 a1 = vec3(5,5,0);
-    vec3 b1 = vec3(5,-5,0);
-    vec3 c1 = vec3(-5,5,0);
-    
+    a = vec3(-10,0,-10);
+    b = vec3(10,0,-10);
+    c = vec3(10,0,-10);
+    triangle *ground_t1 = new triangle(a,b,c,0);
 
-    vec3 cent = vec3(0,0,-3);
-    float rad = 2;
+    a = vec3(3,3,-3);
+    b = vec3(1,0,-3);
+    c = vec3(3,0,-1);
+    triangle *pyramid_t0 = new triangle(a,b,c,1);
 
-    triangle *t = new triangle(a,b,c,1);
-    triangle *t1 = new triangle(a1,b1,c1,1);
-    sphere *s = new sphere(cent,rad,0);
-    
-    list->append(t);
-    list->append(t1);
-    list->append(s);
+    a = vec3(3,3,-3);
+    b = vec3(3,0,-1);
+    c = vec3(5,0,-3);
+    triangle *pyramid_t1 = new triangle(a,b,c,1);
+
+    a = vec3(3,3,-3);
+    b = vec3(5,0,-3);
+    c = vec3(3,0,-5);
+    triangle *pyramid_t2 = new triangle(a,b,c,1);
+
+    a = vec3(3,3,-3);
+    b = vec3(3,0,-5);
+    c = vec3(1,0,-3);
+    triangle *pyramid_t3 = new triangle(a,b,c,1);
+
+    vec3 cent = vec3(-0.0f, -1.0f, 0.5f);
+    float rad = 0.5f;
+    sphere *s0 = new sphere(cent,rad,1);
+
+    list->append(ground_t0);
+    list->append(ground_t1);
+    list->append(pyramid_t0);
+    list->append(pyramid_t1);
+    list->append(pyramid_t2);
+    list->append(pyramid_t3);
+    list->append(s0);
 
     return list;
 }
@@ -80,11 +112,9 @@ camera initCamera() {
     int image_height = 405;
     int image_width = 720;
     float fovy = 45.0f;
-    vec3 camEye = vec3(0.0f, 2.0f, 6.0f);
-    vec3 lookAt = vec3(0.0f, 2.0f, 0.0f);
+    vec3 camEye = vec3(0.0f, 1.0f, 6.0f);
+    vec3 lookAt = vec3(0.0f, 1.0f, 0.0f);
     vec3 up = vec3(0,1,0);
 
-    // camera(image_height, image_width, fovy, camEye, lookAt, up);
-    // camera()
-    return camera();
+    return camera(image_height, image_width, fovy, camEye, lookAt, up);
 }

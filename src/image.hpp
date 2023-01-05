@@ -26,9 +26,9 @@ int write_to_file(int image_width, int image_height, vector<vector<vec3>> image)
       for (int i = 0; i < image_width; ++i) {
 
           //255.999?
-          int ir = static_cast<int>(image[i][j].x * 255);
-          int ig = static_cast<int>(image[i][j].y * 255);
-          int ib = static_cast<int>(image[i][j].z * 255);
+          int ir = static_cast<int>(image[j][i].x * 255);
+          int ig = static_cast<int>(image[j][i].y * 255);
+          int ib = static_cast<int>(image[j][i].z * 255);
 
           ImageFile << ir << ' ' << ig << ' ' << ib << '\n';
       }

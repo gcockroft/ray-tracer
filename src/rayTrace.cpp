@@ -61,6 +61,7 @@ vec3 rayTrace(ray r, scene *myScene, int recurseDepth) {
             // Refraction
             if (!colorSeen.equals(backgroundColor)) {
                 res += mat.reflectiveCol * colorSeen;
+                cout << res << endl;
             }
         }
 
@@ -73,9 +74,11 @@ vec3 rayTrace(ray r, scene *myScene, int recurseDepth) {
 
             if (!colorSeen1.equals(backgroundColor)) {
                 res += mat.transparentCol * colorSeen1;
+                cout << res << endl;
             }
         }
     }
+    cout << res << endl;
     return res;
 }
 

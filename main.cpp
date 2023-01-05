@@ -5,8 +5,8 @@
 
 int main() {
   // Image
-  const int image_height = 256;
-  const int image_width = 256;
+  const int image_height = 405;
+  const int image_width = 720;
   const int samples_per_pixel = 50;
 
   //Initialize pixel array
@@ -21,6 +21,8 @@ int main() {
   // Init camera, materials, objects, and lights.
   scene* myScene = initScene();
   camera cam = myScene->cam;
+  std::cout << cam.screenWidth << std::endl;
+  std::cout << cam.screenHeight << std::endl;
   //In world height and width of pixel
   float pixelWidth = cam.screenWidth / image_width;
   float pixelHeight = cam.screenHeight / image_height;
@@ -40,7 +42,7 @@ int main() {
         pixelColor += rayTrace(r, myScene, 0);
       }
       pixelColor /= samples_per_pixel;
-      image[x][y] = pixelColor;
+      image[y][x] = pixelColor;
     }
     cout << y << endl;
   }
