@@ -5,7 +5,7 @@
 
 int main() {
   // Image
-  const int samples_per_pixel = 50;
+  const int samples_per_pixel = 100;
 
   //Initialize pixel array
   vector<vector<vec3>> image;
